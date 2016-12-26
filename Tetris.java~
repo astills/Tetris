@@ -1,0 +1,47 @@
+
+import java.awt.*; 
+import javax.swing.*;
+
+public class Tetris implements World {
+  public Tetris() {
+    super(); 
+    this.current = new Tetromino( 20, 50, "tea"); 
+  }
+  Tetromino current; 
+  public boolean hasEnded() { 
+
+    return false; 
+  } 
+  public void draw(Graphics g) { 
+    this.current.draw(g); 
+  }
+  private int count;
+  public void update() { 
+    this.count += 1; 
+    System.out.println( count ); 
+  }
+  public void keh(String key) { 
+    if (key.equals("left")) {
+      this.current.moveLeft(); 
+    } else if (key.equals("right")) {
+      this.current.moveRight(); 
+    } else if (key.equals("up")) {
+      this.current.moveUp();       
+    } else if (key.equals("down")) {
+      this.current.moveDown(); 
+    } else if (key.equals("what?!")) {
+      
+    } else {
+      
+    }
+  }
+  public static void main(String[] args) {
+    JFrame a = new JFrame(); 
+    a.setSize(200, 500); 
+    a.setVisible(true); 
+    BigBang b = new BigBang( new Tetris() );
+    a.addKeyListener( b ); 
+    a.getContentPane().add( b ); 
+    b.start(); 
+  }
+}

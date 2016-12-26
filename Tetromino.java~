@@ -1,0 +1,38 @@
+import java.awt.*; 
+import java.util.*; 
+
+public class Tetromino extends ArrayList<Block> {
+  private int x, y; 
+  public Tetromino(int x, int y, String what) {
+    this.x = x; 
+    this.y = y; 
+    if (what.equals("tea")) {
+      this.add( new Block( this.x + 5 * 0, this.y + 5 * 1, 5, 5, Color.YELLOW ) ); 
+      this.add( new Block( this.x + 5 * 1, this.y + 5 * 1, 5, 5, Color.YELLOW ) ); 
+      this.add( new Block( this.x + 5 * 2, this.y + 5 * 1, 5, 5, Color.YELLOW ) ); 
+      this.add( new Block( this.x + 5 * 1, this.y + 5 * 0, 5, 5, Color.YELLOW ) );       
+    } else {
+      
+    }
+  }
+  public void draw(Graphics g) {
+    for (Block b : this)
+      b.draw(g); 
+  }
+  public void moveLeft() {
+    this.x -= 5;  
+    for (Block b : this) b.moveLeft(); 
+  }
+    public void moveRight() {
+    this.x += 5; 
+    for (Block b : this) b.moveRight(); 
+  }
+  public void moveUp() {
+    this.y -= 5;  
+    for (Block b : this) b.moveUp(); 
+  } 
+  public void moveDown() {
+    this.y += 5;  
+    for (Block b : this) b.moveDown(); 
+  }
+}
